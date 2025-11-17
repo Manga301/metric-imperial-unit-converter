@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Parcel Sandbox</title>
+    <title>Metric/Imperial unit conversion</title>
+    <!-- favicon -->
+    <link rel="icon" href="#" type="image/x-icon" />
+    <!-- css -->
+    <link rel="stylesheet" href="src/styles.css" />
     <meta charset="UTF-8" />
   </head>
 
   <body>
     <div id="header">
       <h1 id="title">Metric/Imperial unit conversion</h1>
-      <h2 id="unit">20</h2>
+      <input type="text" id="unit-input" placeholder="00">
+      <button id="convert-btn">Convert</button>
     </div>
     <div id="main-content">
-      <!-- length -->
-      <p class="unit-title">
-        Length (Meter/Feet)
-      </p>
-      <p class="unit-content" id="meters-and-feet"></p>
-      <!-- volume -->
-      <p class="unit-title">Volume (Liters/Gallons)</p>
-      <p class="unit-content" id="liters-and-gallons"></p>
-      <!-- mass -->
-      <p class="unit-title">
-        Mass (Kilograms/Pounds)
-      </p>
-      <p class="unit-content" id="kilograms-and-pounds"></p>
+        <!-- length -->
+        <p class="unit-title">Length (Meter/Feet)</p>
+        <p class="unit-content" id="meters-and-feet"></p>
+        <!-- volume -->
+        <p class="unit-title">Volume (Liters/Gallons)</p>
+        <p class="unit-content" id="liters-and-gallons"></p>
+        <!-- mass -->
+        <p class="unit-title">Mass (Kilograms/Pounds)</p>
+        <p class="unit-content" id="kilograms-and-pounds"></p>
     </div>
     <script src="src/index.js"></script>
   </body>
