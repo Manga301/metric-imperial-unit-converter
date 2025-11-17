@@ -10,6 +10,11 @@ body {
 
 #header {
   background: linear-gradient(246.26deg, #585dfe 0%, #fb3796 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 400px;
+  width: 100%;
 }
 
 #title {
@@ -22,13 +27,36 @@ body {
   padding: 5rem;
 }
 
-#unit {
+#unit-input {
   font-weight: 800;
-  font-size: 9rem;
-  line-height: 2.4rem;
+  font-size: 2rem;
   text-align: center;
   color: #ffffff;
-  padding-bottom: 5rem;
+  width: 70px;
+  height: 70px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 8px;
+}
+
+#unit-input::placeholder {
+  color: #fff;
+}
+
+#unit-input:focus {
+  outline: none;
+  border: 2px solid #fff;
+}
+
+#convert-btn {
+  background-color: #5a5dfd;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  margin: 30px 0;
+  width: 120px;
+  height: 42px;
+  font-size: 22px;
 }
 
 #main-content {

@@ -1,45 +1,52 @@
-import "./styles.css";
+/*
+  feet = meters × 3.28084
+  meters = feet ÷ 3.28084
 
-let metersAndFeet = document.getElementById("meters-and-feet");
-let litersAndGallons = document.getElementById("liters-and-gallons");
-let kilogramsAndPounds = document.getElementById("kilograms-and-pounds");
+  gallons = liters ÷ 3.78541
+  liters = gallons × 3.78541
 
-let output = 0;
-let unit = document.getElementById("unit");
+  pounds = kilograms × 2.20462
+  kilograms = pounds ÷ 2.20462
+*/
+let unitInput = document.getElementById("unit-input")
+let metersAndFeet = document.getElementById("meters-and-feet")
+let litersAndGallons = document.getElementById("liters-and-gallons")
+let kilogramsAndPounds = document.getElementById("kilograms-and-pounds")
+const lengthUnit = 3.28084
+const volumeUnit = 3.78541
+const massUnit = 2.20462
+const convertBtn = document.getElementById("convert-btn")
 
-// Meters to feet | Feet to meters
-function calcMetersAndFeet() {
-  let meterFeetUnit = Number(unit.textContent);
-  let feetFormula = 3.28;
-  let feetCalc = (meterFeetUnit / feetFormula).toFixed(3);
-  let meterCalc = Math.round(meterFeetUnit * feetFormula);
-  output = metersAndFeet.textContent = `${meterFeetUnit} meters = ${feetCalc} feet | ${meterFeetUnit} feet = ${meterCalc} meters`;
-
-  return output;
+// convert to imperial
+const convertToImperial = (metric, unitOfMeasure) => {
+  const imperialValue = Number(metric * unitOfMeasure)
+  return Number(imperialValue.toFixed(3))
 }
 
-// Liters to gallons | Gallons to liters
-function calcLitersAndGallons() {
-  let litersGallonsUnits = Number(unit.textContent);
-  let gallonsFormula = 0.26;
-  let litersFormula = 3.78;
-  let litersCalc = Math.round(litersGallonsUnits * litersFormula);
-  let gallonCalc = (litersGallonsUnits / gallonsFormula).toFixed(3);
-  output = litersAndGallons.textContent = `${litersGallonsUnits} liters = ${gallonCalc} gallons | ${litersGallonsUnits} gallons = ${litersCalc} liters`;
-
-  return output;
+// convert to metric
+const convertToMetric = (imperial, unitOfMeasure) => {
+  const metricValue = imperial / unitOfMeasure
+  return Number(metricValue.toFixed(3))
 }
 
-// Kilograms to pounds | Pounds to kilogram
-function calcKilogramsAndGallons() {
-  let kilogramsPoundsUnits = Number(unit.textContent);
-  let poundFormula = 2.2;
-  let kilogramFormula = 0.45;
-  let kilogramCalc = Math.round(kilogramsPoundsUnits * poundFormula);
-  let poundCalc = Math.round(kilogramsPoundsUnits * kilogramFormula);
-  output = kilogramsAndPounds.textContent = `${kilogramsPoundsUnits} kilos = ${kilogramCalc} pounds | ${kilogramsPoundsUnits} pounds = ${poundCalc} kilos`;
+// render conversions 
+const renderConversions = (htmlEl, unitValue, metric, imperial, conversionMetric, conversionImperial) => {
+
+  htmlEl.textContent = `${unitValue} ${metric} = ${conversionImperial} ${imperial} | ${unitValue} ${imperial} = ${conversionMetric} ${metric}`
+  
 }
 
-calcMetersAndFeet();
-calcLitersAndGallons();
-calcKilogramsAndGallons();
+convertBtn.addEventListener('click', () => {
+  const unitInputValue = Number(unitInput.value)
+
+  // length
+  renderConversions(metersAndFeet, unitInputValue, "meters", "feet", convertToMetric(unitInputValue, lengthUnit), convertToImperial(unitInputValue, lengthUnit))
+
+  // volume
+  renderConversions(litersAndGallons, unitInputValue, "liters", "gallons", convertToMetric(unitInputValue, volumeUnit), convertToImperial(unitInputValue, volumeUnit))
+
+  // mass
+  renderConversions(kilogramsAndPounds, unitInputValue, "kilograms", "pounds", convertToMetric(unitInputValue, massUnit), convertToImperial(unitInputValue, massUnit))
+
+})
+
