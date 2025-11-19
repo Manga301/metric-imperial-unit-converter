@@ -1,2 +1,2 @@
 # metric-imperial-unit-converter
-Created with CodeSandbox
+[screenshot](src/images/converter-screenshot.png)
